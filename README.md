@@ -1,5 +1,5 @@
 ## **Quick Start**
-This is a FaceNet and MTCNN Inference from [this](https://github.com/timesler/facenet-pytorch)
+This is a FaceNet and MTCNN Inference from [this](https://github.com/timesler/facenet-pytorch).
 For more information, please read my series: https://viblo.asia/p/nhan-dien-khuon-mat-voi-mang-mtcnn-va-facenet-phan-2-bJzKmrVXZ9N
 1. Install:
     
