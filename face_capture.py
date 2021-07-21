@@ -24,7 +24,7 @@ while cap.isOpened() and count:
         face_img = mtcnn(frame, save_path = path)
         count-=1
     leap+=1
-    cv2.imshow('Face_Capturing', frame)
+    cv2.imshow('Face Capturing', frame)
     if cv2.waitKey(1)&0xFF == 27:
         break
 cap.release()
