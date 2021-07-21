@@ -92,9 +92,12 @@ if __name__ == "__main__":
                     face = extract_face(bbox, frame)
                     idx, score = inference(model, face, embeddings)
                     if idx != -1:
-                        frame = cv2.rectangle(frame,(bbox[0],bbox[1]),(bbox[2],bbox[3]),(0,0,255),6)
+                        frame = cv2.rectangle(frame, (bbox[0],bbox[1]), (bbox[2],bbox[3]), (0,0,255), 6)
                         score = torch.Tensor.cpu(score[0]).detach().numpy()*power
-                        frame = cv2.putText(frame,names[idx] + '_{:.2f}'.format(score),(bbox[0],bbox[1]),cv2.FONT_HERSHEY_DUPLEX, 2, (0,255,0), 2, cv2.LINE_8)
+                        frame = cv2.putText(frame, names[idx] + '_{:.2f}'.format(score), (bbox[0],bbox[1]), cv2.FONT_HERSHEY_DUPLEX, 2, (0,255,0), 2, cv2.LINE_8)
+                    else:
+                        frame = cv2.rectangle(frame, (bbox[0],bbox[1]), (bbox[2],bbox[3]), (0,0,255), 6)
+                        frame = cv2.putText(frame,'Unknown', (bbox[0],bbox[1]), cv2.FONT_HERSHEY_DUPLEX, 2, (0,255,0), 2, cv2.LINE_8)
 
             new_frame_time = time.time()
             fps = 1/(new_frame_time-prev_frame_time)
