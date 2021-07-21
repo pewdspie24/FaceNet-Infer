@@ -9,7 +9,7 @@ import numpy as np
 IMG_PATH = './data/test_images'
 DATA_PATH = './data'
 
-device = 'cpu'
+device =  torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 print(device)
 def trans(img):
     transform = transforms.Compose([
@@ -48,9 +48,10 @@ for usr in os.listdir(IMG_PATH):
     
 embeddings = torch.cat(embeddings) #[n,512]
 names = np.array(names)
-print(embeddings.shape)
+
 if device == 'cpu':
     torch.save(embeddings, DATA_PATH+"/faceslistCPU.pth")
 else:
     torch.save(embeddings, DATA_PATH+"/faceslist.pth")
 np.save(DATA_PATH+"/usernames", names)
+print('Update Completed! There are {0} people in FaceLists'.format(names.shape[0]))
